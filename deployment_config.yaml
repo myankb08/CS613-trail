@@ -1,0 +1,88 @@
+# deployment_config.yaml
+
+# Streamlit Configuration
+streamlit:
+  page_config:
+    page_title: "Enhanced IndicTrans2 - CS613"
+    layout: "wide"
+    initial_sidebar_state: "expanded"
+
+  logger:
+    level: "info"
+
+# Model Configuration
+model:
+  name: "ai4bharatindictrans2-indic-indic-dist-320M"
+  device: "cuda"  # or "cpu"
+  trust_remote_code: true
+
+# Novelty Features
+features:
+  structure_preservation:
+    enabled: true
+    max_indent_level: 10
+
+  named_entity_consistency:
+    enabled: true
+    case_sensitive: true
+    min_entity_length: 2
+
+  context_caching:
+    enabled: true
+    max_cache_size: 1000
+    cache_ttl: 3600  # seconds
+
+  quality_metrics:
+    enabled: true
+    length_ratio_threshold: [0.5, 2.5]
+    script_check: true
+
+  error_detection:
+    enabled: true
+    dropout_threshold: 0.7  # sentences
+    repetition_threshold: 3  # consecutive
+
+  domain_aware:
+    enabled: true
+    domains: ["legal", "literary", "technical", "general"]
+
+# Translation Parameters
+translation:
+  max_length: 2048
+  num_beams: 5
+  temperature: 1.0
+  top_p: 0.95
+
+# Languages
+languages:
+  - name: "English"
+    tag: "eng_Latn"
+  - name: "Hindi"
+    tag: "hin_Deva"
+  - name: "Telugu"
+    tag: "tel_Telu"
+  - name: "Tamil"
+    tag: "tam_Taml"
+  - name: "Kannada"
+    tag: "kan_Knda"
+  - name: "Punjabi"
+    tag: "pan_Guru"
+  - name: "Gujarati"
+    tag: "guj_Gujr"
+  - name: "Marathi"
+    tag: "mar_Deva"
+  - name: "Bengali"
+    tag: "ben_Beng"
+
+# Logging
+logging:
+  level: "INFO"
+  log_file: "translation_app.log"
+  max_log_size_mb: 100
+  backup_count: 5
+
+# Performance
+performance:
+  batch_size: 8
+  num_workers: 4
+  precision: "float32"  # or "float16" for GPU
