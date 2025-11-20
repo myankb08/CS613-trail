@@ -1,6 +1,6 @@
 # Core Dependencies
 torch
-transformers>=4.53.2
+transformers==4.53.2
 streamlit
 datasets
 scipy
